@@ -57,7 +57,7 @@ class CollectionHistory
         for property of _.extend {}, a, b
           objectGraphPath.push '.' + property
           if not a[property]? or a[property].constructor != Function
-            matcher a[property], b[property]
+            matcher a?[property], b?[property]
           objectGraphPath.pop()
       else if not a? or a.constructor != Function
         unless _.isEqual a, b
