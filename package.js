@@ -1,7 +1,7 @@
 Package.describe({
   name: 'oaf:collection-history',
   summary: 'Enables logging of document changes on collections',
-  version: '0.1.0',
+  version: '0.1.1',
   git: 'https://github.com/oafmedium/meteor-collection-history/'
 });
 
@@ -13,5 +13,5 @@ Package.onUse(function(api) {
   api.addFiles([
     'collection-history.coffee'
   ]);
-  //api.export('CollectionHistory');
+  api.export('CollectionHistory');
 });
