@@ -18,6 +18,7 @@ class CollectionHistory
     ['insert','update','remove'].forEach (type) ->
       return unless options.log[type]
       collection.after[type] (userId, doc, fieldNames, modifier, options) ->
+        validDoc = _.omit doc, '_id'
         state =
           type: type
           collection: collection._name
@@ -36,7 +37,10 @@ class CollectionHistory
             state.previous = doc
             state.current = {}
 
-        CollectionHistory._createState options, state
+        unless collection.simpleSchema()
+          CollectionHistory._createState options, state
+        if collection.simpleSchema().namedContext().validate(validDoc)
+          CollectionHistory._createState options, state
 
   @_createState: (options, doc) ->
     if options?.fields?
