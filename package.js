@@ -7,11 +7,12 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0.2.1');
-  api.use('coffeescript');
-  api.use('mongo');
-  api.use('matb33:collection-hooks@0.7.9');
-  api.addFiles([
-    'collection-history.coffee'
+  api.use([
+    'coffeescript',
+    'mongo',
+    'matb33:collection-hooks@0.7.9'
   ]);
+  
+  api.addFiles(['collection-history.coffee']);
   api.export('CollectionHistory');
 });
